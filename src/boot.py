@@ -1,6 +1,7 @@
 # This file is executed on every boot (including wake-boot from deepsleep)
 #import esp
 #esp.osdebug(None)
+import secrets
 import webrepl
 webrepl.start()
 
@@ -18,8 +19,8 @@ try:
 except:
   import socket
 
-ssid = 'Bicycle'
-passwd = 'Bicycle1'
+ssid = secrets.ssid
+passwd = secrets.psk
 ap = network.WLAN(network.AP_IF)
 ap.active(True)
 ap.config(essid=ssid, password=passwd, authmode=3)

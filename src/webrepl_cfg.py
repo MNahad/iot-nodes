@@ -1,1 +1,2 @@
-PASS = 'Bicycle1'
+import secrets
+PASS = secrets.psk
