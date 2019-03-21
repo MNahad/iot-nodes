@@ -21,7 +21,7 @@
 # THE SOFTWARE.
 """
 Derived from Adafruit INA219 driver at https://github.com/adafruit/Adafruit_CircuitPython_INA219/blob/master/adafruit_ina219.py
-Modified to run using MicroPython machine.I2C class
+Modified to run with the MicroPython machine.I2C class
 """
 
 from micropython import const
