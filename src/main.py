@@ -10,17 +10,17 @@ energy = 0
 
 def res():
     data = {
-        "currentInA": current,
-        "voltageInV": voltage,
-        "powerInW": power,
-        "energyTotalInJ": energy,
+        "current(A)": current,
+        "voltage(V)": voltage,
+        "power(W)": power,
+        "totalEnergy(J)": energy,
     }
     return json.dumps(data)
 
 
 addr = socket.getaddrinfo('192.168.4.1', 80)[0][-1]
 sock = socket.socket()
-sock.setblocking(0)
+sock.settimeout(0.01)
 sock.bind(addr)
 sock.listen(1)
 
@@ -38,6 +38,8 @@ while True:
             line = req.readline()
             if not line or line == b'\r\n':
                 break
+        cl.send('HTTP/1.1 200 OK\r\n')
+        cl.send('Content-Type: application/json\r\n\r\n')
         cl.send(res())
         cl.close()
     except:
